@@ -1,14 +1,45 @@
-import Rectangle from './rectangle';
 import './index.scss';
 
-export default class SimpleMath {
-  constructor(args) {
-    console.log(args);
-  }
+export default class TextEmotion {
+  constructor(opt) {
 
-  getRectangle(x, y) {
-    const fx = new Rectangle();
+    this.wrapper = typeof opt.wrapper === 'object' ?
+      opt.wrapper :
+      document.querySelector(opt.wrapper);
 
-    return fx.calculate(x, y);
+    this.symbol = {
+      face: {
+        round: ['(', ')'],
+        roundLeft: ['(', ''],
+        roundRight: ['', ')'],
+        square: ['[', ']'],
+        squareLeft: ['[', ''],
+        squareRight: ['', ']']
+      },
+      eyes: {
+        plus: ['+', '+'],
+        min: ['—', '—'],
+        accent: ['^', '^'],
+        not: ['-¬', '-¬'],
+        tilde: ['~', '~'],
+        arrow: ['>', '<']
+      },
+      mouth: {
+        triangle: '∆',
+        kiss: '3',
+        poker: '_',
+        vi: 'v'
+      },
+      hands: {
+        slash: ['\'', '/'],
+        slashLeft: ['\'', ''],
+        slashRight: ['', '/'],
+        squareUp: ['⎣', '⎦'],
+        squareDown: ['⎡', '⎤'],
+        handDown: ['⎛', '⎞'],
+        handWhat: ['⎞', '⎛'],
+        handUp: ['⎝', '⎠']
+      }
+    };
   }
 }
