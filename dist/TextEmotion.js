@@ -86,50 +86,89 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 __webpack_require__(2);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var TextEmotion = function TextEmotion(opt) {
-  _classCallCheck(this, TextEmotion);
+var TextEmotion = function () {
+  function TextEmotion(opt) {
+    _classCallCheck(this, TextEmotion);
 
-  this.wrapper = _typeof(opt.wrapper) === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
+    this.wrapper = _typeof(opt.wrapper) === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
 
-  this.symbol = {
-    face: {
-      round: ['(', ')'],
-      roundLeft: ['(', ''],
-      roundRight: ['', ')'],
-      square: ['[', ']'],
-      squareLeft: ['[', ''],
-      squareRight: ['', ']']
-    },
-    eyes: {
-      plus: ['+', '+'],
-      min: ['—', '—'],
-      accent: ['^', '^'],
-      not: ['-¬', '-¬'],
-      tilde: ['~', '~'],
-      arrow: ['>', '<']
-    },
-    mouth: {
-      triangle: '∆',
-      kiss: '3',
-      poker: '_',
-      vi: 'v'
-    },
-    hands: {
-      slash: ['\'', '/'],
-      slashLeft: ['\'', ''],
-      slashRight: ['', '/'],
-      squareUp: ['⎣', '⎦'],
-      squareDown: ['⎡', '⎤'],
-      handDown: ['⎛', '⎞'],
-      handWhat: ['⎞', '⎛'],
-      handUp: ['⎝', '⎠']
+    this.symbol = {
+      face: {
+        round: ['( ', ' )'],
+        roundLeft: ['( ', ' '],
+        roundRight: [' ', ' )'],
+        square: ['[ ', ' ]'],
+        squareLeft: ['[ ', ' '],
+        squareRight: [' ', ' ]']
+      },
+      eyes: {
+        plus: ['+', '+'],
+        min: ['—', '—'],
+        accent: ['^', '^'],
+        not: ['-¬', '-¬'],
+        tilde: ['~', '~'],
+        arrow: ['>', '<']
+      },
+      mouth: {
+        triangle: ['∆'],
+        kiss: ['3'],
+        poker: ['_'],
+        vi: ['v']
+      },
+      hands: {
+        slash: ['\'', '/'],
+        slashLeft: ['\'', ''],
+        slashRight: ['', '/'],
+        squareUp: ['⎣', '⎦'],
+        squareDown: ['⎡', '⎤'],
+        handDown: ['⎛', '⎞'],
+        handWhat: ['⎞', '⎛'],
+        handUp: ['⎝', '⎠'],
+        none: ['', '']
+      }
+    };
+    this.emotion = {
+      flat: ['mouth:poker', 'eyes:min', 'face:round', 'hands:none']
+    };
+
+    this.create(this.emotion['flat']);
+  }
+
+  _createClass(TextEmotion, [{
+    key: 'create',
+    value: function create(config) {
+      var _this = this;
+
+      var face = [];
+
+      config.map(function (item) {
+        var value = item.split(':');
+
+        if (!value[0]) throw Error('Symbol position isn\'t defined');
+        if (!value[1]) throw Error('Face symbol isn\'t defined');
+
+        var faceSymbol = _this.symbol[value[0]][value[1]];
+
+        if (faceSymbol.length > 1) {
+          face.unshift(faceSymbol[0]);
+          face[face.length + 1] = faceSymbol[1];
+        } else {
+          face.push(faceSymbol.join(''));
+        }
+      });
+
+      this.wrapper.innerHTML = face.join('');
     }
-  };
-};
+  }]);
+
+  return TextEmotion;
+}();
 
 exports.default = TextEmotion;
 
