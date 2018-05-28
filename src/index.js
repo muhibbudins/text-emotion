@@ -7,6 +7,8 @@ export default class TextEmotion {
       document.querySelector(opt.wrapper);
     this.emotion = opt.emotion;
     this.animate = opt.animate;
+    this.color = opt.color;
+    this.background = opt.background;
     this.symbol = {
       face: {
         round: ['( ', ' )'],
@@ -55,27 +57,11 @@ export default class TextEmotion {
     });
 
     if (this.bracket) {
-      this.wrapper.innerHTML = this.bracket[0];
+      this.wrapper.appendChild(this.place(this.bracket[0]));
     }
 
     if (this.animate) {
-      let index = 0;
-
-      const animate = () => {
-        this.wrapper.innerHTML = this.bracket[index];
-
-        if (index === this.bracket.length - 1) {
-          index = 0;
-        } else {
-          index += 1;
-        }
-
-        setTimeout(() => {
-          requestAnimationFrame(animate);
-        }, this.animate[index]);
-      };
-
-      requestAnimationFrame(animate);
+      this.createAnimate();
     }
   }
 
@@ -99,5 +85,42 @@ export default class TextEmotion {
     });
 
     return face.join('');
+  }
+
+  createAnimate() {
+    let index = 0;
+
+    const animate = () => {
+      this.wrapper.innerHTML = null;
+      this.wrapper.appendChild(this.place(this.bracket[index]));
+
+      if (index === this.bracket.length - 1) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+
+      setTimeout(() => {
+        requestAnimationFrame(animate);
+      }, this.animate[index]);
+    };
+
+    requestAnimationFrame(animate);
+  }
+
+  place(emot) {
+    const wrap = document.createElement('div');
+
+    wrap.className = 't-animate';
+    wrap.innerHTML = emot;
+
+    if (this.color) {
+      wrap.style.color = this.color;
+    }
+    if (this.background) {
+      wrap.style.backgroundColor = this.background;
+    }
+
+    return wrap;
   }
 }

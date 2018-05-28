@@ -101,6 +101,8 @@ var TextEmotion = function () {
     this.wrapper = _typeof(opt.wrapper) === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
     this.emotion = opt.emotion;
     this.animate = opt.animate;
+    this.color = opt.color;
+    this.background = opt.background;
     this.symbol = {
       face: {
         round: ['( ', ' )'],
@@ -149,27 +151,11 @@ var TextEmotion = function () {
     });
 
     if (this.bracket) {
-      this.wrapper.innerHTML = this.bracket[0];
+      this.wrapper.appendChild(this.place(this.bracket[0]));
     }
 
     if (this.animate) {
-      var index = 0;
-
-      var animate = function animate() {
-        _this.wrapper.innerHTML = _this.bracket[index];
-
-        if (index === _this.bracket.length - 1) {
-          index = 0;
-        } else {
-          index += 1;
-        }
-
-        setTimeout(function () {
-          requestAnimationFrame(animate);
-        }, _this.animate[index]);
-      };
-
-      requestAnimationFrame(animate);
+      this.createAnimate();
     }
   }
 
@@ -197,6 +183,47 @@ var TextEmotion = function () {
       });
 
       return face.join('');
+    }
+  }, {
+    key: 'createAnimate',
+    value: function createAnimate() {
+      var _this3 = this;
+
+      var index = 0;
+
+      var animate = function animate() {
+        _this3.wrapper.innerHTML = null;
+        _this3.wrapper.appendChild(_this3.place(_this3.bracket[index]));
+
+        if (index === _this3.bracket.length - 1) {
+          index = 0;
+        } else {
+          index += 1;
+        }
+
+        setTimeout(function () {
+          requestAnimationFrame(animate);
+        }, _this3.animate[index]);
+      };
+
+      requestAnimationFrame(animate);
+    }
+  }, {
+    key: 'place',
+    value: function place(emot) {
+      var wrap = document.createElement('div');
+
+      wrap.className = 't-animate';
+      wrap.innerHTML = emot;
+
+      if (this.color) {
+        wrap.style.color = this.color;
+      }
+      if (this.background) {
+        wrap.style.backgroundColor = this.background;
+      }
+
+      return wrap;
     }
   }]);
 
