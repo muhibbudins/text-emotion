@@ -6,7 +6,7 @@ export default class TextEmotion {
       opt.wrapper :
       document.querySelector(opt.wrapper);
     this.emotion = opt.emotion;
-    this.delay = opt.delay;
+    this.animate = opt.delay;
     this.loop = opt.loop;
     this.symbol = {
       face: {
@@ -59,7 +59,7 @@ export default class TextEmotion {
       this.wrapper.innerHTML = this.bracket[0];
     }
 
-    if (this.delay) {
+    if (this.animate) {
       let index = 0;
 
       const animate = () => {
@@ -73,7 +73,7 @@ export default class TextEmotion {
 
         setTimeout(() => {
           requestAnimationFrame(animate);
-        }, this.delay[index]);
+        }, this.animate[index]);
       };
 
       requestAnimationFrame(animate);

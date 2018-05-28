@@ -100,7 +100,7 @@ var TextEmotion = function () {
 
     this.wrapper = _typeof(opt.wrapper) === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
     this.emotion = opt.emotion;
-    this.delay = opt.delay;
+    this.animate = opt.delay;
     this.loop = opt.loop;
     this.symbol = {
       face: {
@@ -153,7 +153,7 @@ var TextEmotion = function () {
       this.wrapper.innerHTML = this.bracket[0];
     }
 
-    if (this.delay) {
+    if (this.animate) {
       var index = 0;
 
       var animate = function animate() {
@@ -167,7 +167,7 @@ var TextEmotion = function () {
 
         setTimeout(function () {
           requestAnimationFrame(animate);
-        }, _this.delay[index]);
+        }, _this.animate[index]);
       };
 
       requestAnimationFrame(animate);
