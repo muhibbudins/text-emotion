@@ -15,7 +15,7 @@ We use [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion 
 ```html
 <script src="path/to/TextEmotion.min.js" type="text/javascript"></script>
 ```
-3. Run TextEmotion like [demo](/preview).
+3. Run TextEmotion like [demo](/preview)
 
 ### Todo
 
