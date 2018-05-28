@@ -260,9 +260,10 @@ export default class TextEmotion {
   }
 
   replace(opt) {
-    let target = document.querySelectorAll('.t-inline');
+    const target = opt ? opt.target : '.t-inline';
+    let wrapper = document.querySelectorAll(target);
 
-    target.forEach((el, index) => {
+    wrapper.forEach((el, index) => {
       el.dataset.id = this.unique();
 
       let face = '';
@@ -277,7 +278,7 @@ export default class TextEmotion {
       face = dataAttr.face.split(delimiter).map(item => item.trim()).filter(item => item !== '');
 
       this.emotion = face;
-      this.wrapper = document.querySelector(`.t-inline[data-id="${dataAttr.id}"]`);
+      this.wrapper = document.querySelector(`${target}[data-id="${dataAttr.id}"]`);
 
       if (dataAttr.color) {
         this.color = dataAttr.color;

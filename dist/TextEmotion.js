@@ -363,9 +363,10 @@ var TextEmotion = function () {
     value: function replace(opt) {
       var _this3 = this;
 
-      var target = document.querySelectorAll('.t-inline');
+      var target = opt ? opt.target : '.t-inline';
+      var wrapper = document.querySelectorAll(target);
 
-      target.forEach(function (el, index) {
+      wrapper.forEach(function (el, index) {
         el.dataset.id = _this3.unique();
 
         var face = '';
@@ -384,7 +385,7 @@ var TextEmotion = function () {
         });
 
         _this3.emotion = face;
-        _this3.wrapper = document.querySelector('.t-inline[data-id="' + dataAttr.id + '"]');
+        _this3.wrapper = document.querySelector(target + '[data-id="' + dataAttr.id + '"]');
 
         if (dataAttr.color) {
           _this3.color = dataAttr.color;
