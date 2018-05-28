@@ -27,8 +27,9 @@
 <script>
   var colored = new TextEmotion({
     wrapper: document.querySelector('#colored-face'),
-    emotion: ['face72'],
-    color: 'green'
+    emotion: ['face42'],
+    color: '#ecf0f1',
+    background: '#27ae60'
   });
 </script>
 ```
