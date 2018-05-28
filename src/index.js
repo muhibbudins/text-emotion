@@ -2,11 +2,12 @@ import './index.scss';
 
 export default class TextEmotion {
   constructor(opt) {
-
     this.wrapper = typeof opt.wrapper === 'object' ?
       opt.wrapper :
       document.querySelector(opt.wrapper);
-
+    this.emotion = opt.emotion;
+    this.delay = opt.delay;
+    this.loop = opt.loop;
     this.symbol = {
       face: {
         round: ['( ', ' )'],
@@ -42,11 +43,42 @@ export default class TextEmotion {
         none: ['', '']
       }
     };
-    this.emotion = {
-      flat: ['mouth:poker', 'eyes:min', 'face:round', 'hands:none']
+    this.emotionConfig = {
+      test1: ['mouth:poker', 'eyes:accent', 'face:round', 'hands:none'],
+      test2: ['mouth:poker', 'eyes:arrow', 'face:round', 'hands:handUp']
     };
+    this.bracket = [];
 
-    this.create(this.emotion['flat']);
+    this.emotion.map(item => {
+      const result = this.create(this.emotionConfig[item]);
+
+      this.bracket.push(result);
+    });
+
+    if (this.bracket) {
+      this.wrapper.innerHTML = this.bracket[0];
+    }
+
+    if (this.delay) {
+      let index = 0;
+
+      const animate = () => {
+        this.wrapper.innerHTML = this.bracket[index];
+
+        if (index === this.bracket.length - 1) {
+          index = 0;
+        } else {
+          index += 1;
+        }
+
+        setTimeout(() => {
+          requestAnimationFrame(animate);
+        }, this.delay[index]);
+      };
+
+      requestAnimationFrame(animate);
+
+    }
   }
 
   create(config) {
@@ -68,6 +100,6 @@ export default class TextEmotion {
       }
     });
 
-    this.wrapper.innerHTML = face.join('');
+    return face.join('');
   }
 }

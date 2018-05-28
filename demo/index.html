@@ -12,7 +12,10 @@
   <script src="../dist/TextEmotion.js"></script>
   <script>
     var x = new TextEmotion({
-      wrapper: document.querySelector('#root')
+      wrapper: document.querySelector('#root'),
+      emotion: ['test1', 'test2'],
+      delay: [200, 1500],
+      loop: 3
     });
   </script>
 </body>

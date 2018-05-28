@@ -94,10 +94,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var TextEmotion = function () {
   function TextEmotion(opt) {
+    var _this = this;
+
     _classCallCheck(this, TextEmotion);
 
     this.wrapper = _typeof(opt.wrapper) === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
-
+    this.emotion = opt.emotion;
+    this.delay = opt.delay;
+    this.loop = opt.loop;
     this.symbol = {
       face: {
         round: ['( ', ' )'],
@@ -133,17 +137,47 @@ var TextEmotion = function () {
         none: ['', '']
       }
     };
-    this.emotion = {
-      flat: ['mouth:poker', 'eyes:min', 'face:round', 'hands:none']
+    this.emotionConfig = {
+      test1: ['mouth:poker', 'eyes:accent', 'face:round', 'hands:none'],
+      test2: ['mouth:poker', 'eyes:arrow', 'face:round', 'hands:handUp']
     };
+    this.bracket = [];
 
-    this.create(this.emotion['flat']);
+    this.emotion.map(function (item) {
+      var result = _this.create(_this.emotionConfig[item]);
+
+      _this.bracket.push(result);
+    });
+
+    if (this.bracket) {
+      this.wrapper.innerHTML = this.bracket[0];
+    }
+
+    if (this.delay) {
+      var index = 0;
+
+      var animate = function animate() {
+        _this.wrapper.innerHTML = _this.bracket[index];
+
+        if (index === _this.bracket.length - 1) {
+          index = 0;
+        } else {
+          index += 1;
+        }
+
+        setTimeout(function () {
+          requestAnimationFrame(animate);
+        }, _this.delay[index]);
+      };
+
+      requestAnimationFrame(animate);
+    }
   }
 
   _createClass(TextEmotion, [{
     key: 'create',
     value: function create(config) {
-      var _this = this;
+      var _this2 = this;
 
       var face = [];
 
@@ -153,7 +187,7 @@ var TextEmotion = function () {
         if (!value[0]) throw Error('Symbol position isn\'t defined');
         if (!value[1]) throw Error('Face symbol isn\'t defined');
 
-        var faceSymbol = _this.symbol[value[0]][value[1]];
+        var faceSymbol = _this2.symbol[value[0]][value[1]];
 
         if (faceSymbol.length > 1) {
           face.unshift(faceSymbol[0]);
@@ -163,7 +197,7 @@ var TextEmotion = function () {
         }
       });
 
-      this.wrapper.innerHTML = face.join('');
+      return face.join('');
     }
   }]);
 
