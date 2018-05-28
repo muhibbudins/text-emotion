@@ -1,23 +1,37 @@
-# ES6 Library Template
+# Text Emotion
 
-Starter template to create your own javascript library.
+TextEmotion are library to create emotion text only using Vanilla JavaScript (without dependency required). We can create emotion like smile, sad and more (180+ emotion).
 
-### How to use?
+We use [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion dictionary.
 
-Just change any text like **LibraryName** to your own. And let's code your library!
+- [Demo](https://muhibbudins.github.io/text-emotion/#/preview)
+- [Face Dictionary](https://muhibbudins.github.io/text-emotion/#/face)
+- [API Reference](https://muhibbudins.github.io/text-emotion/#/api)
 
-### What's include?
+### Getting Started
 
-- Webpack dev & prod config
-- ES6 compiler using babel
-- SASS / SCSS compiler using node-sass
-- Auto export to UMD
+1. [Download](https://raw.githubusercontent.com/muhibbudins/text-emotion/master/dist/TextEmotion.min.js) latest version of TextEmotion
+2. Include to your project
+```html
+<script src="path/to/TextEmotion.min.js" type="text/javascript"></script>
+```
+3. Run TextEmotion like [demo](https://muhibbudins.github.io/text-emotion/#/preview)
 
 ### Todo
 
-- Add HMR module
-- Add testing example
+- [x] Create base Emotion Dictionary
+- [x] Create function to create face
+- [x] Create function to animate face
+- [x] Add option color and background
+- [x] Change base Emotion Symbol to KawaiiFace
+- [x] Create function inline replacer
+- [x] Create documentation
+- [ ] Implement animate on inline emotion
+
+### Thanks To
+
+Special thanks to [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion dictionary.
 
 ### License
 
-This project under MIT License
+This projects under MIT License

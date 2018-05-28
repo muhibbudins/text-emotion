@@ -4,7 +4,7 @@ TextEmotion are library to create emotion text only using Vanilla JavaScript (wi
 
 We use [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion dictionary.
 
-- [Live Preview](/preview)
+- [Demo](/preview)
 - [Face Dictionary](/face)
 - [API Reference](/api)
 
