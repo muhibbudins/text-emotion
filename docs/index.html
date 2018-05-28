@@ -31,7 +31,7 @@
   <!-- Import TextEmotion -->
   <script src="./dist/TextEmotion.js"></script>
   <script>
-    if (window.location.hash.indexOf('preview') > -1) {
+    function doCompile() {
       setTimeout(function() {
         var basic = new TextEmotion({
           wrapper: document.querySelector('#face'),
@@ -60,6 +60,13 @@
           target: '.custom-class-name'
         });
       }, 1000);
+    }
+
+    window.onhashchange = function() {
+      doCompile();
+    }
+    if (window.location.hash.indexOf('preview') > -1) {
+      doCompile();
     }
   </script>
 </body>
