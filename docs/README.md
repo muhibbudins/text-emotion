@@ -1,23 +1,28 @@
-# ES6 Library Template
+# What Is?
 
-Starter template to create your own javascript library.
+TextEmotion are library to create emotion text only using Vanilla JavaScript (without dependency required). We can create emotion like smile, sad and more (180+ emotion).
 
-### How to use?
+We use [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion dictionary.
 
-Just change any text like **LibraryName** to your own. And let's code your library!
+- [Live Preview](/preview)
+- [Face Symbol](/face)
+- [API Reference](/api)
 
-### What's include?
+#### Todo
 
-- Webpack dev & prod config
-- ES6 compiler using babel
-- SASS / SCSS compiler using node-sass
-- Auto export to UMD
+- [x] Create base Emotion Dictionary
+- [x] Create function to create face
+- [x] Create function to animate face
+- [x] Add option color and background
+- [x] Change base Emotion Symbol to KawaiiFace
+- [x] Create function inline replacer
+- [x] Create documentation
+- [ ] Implement animate on inline emotion
 
-### Todo
+#### Credit
 
-- Add HMR module
-- Add testing example
+Special thanks to [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/)
 
-### License
+#### License
 
-This project under MIT License
+This projects under MIT License

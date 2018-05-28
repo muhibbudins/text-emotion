@@ -7,6 +7,15 @@
   <meta name="description" content="Animation text emotion">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+
+  <style>
+    .demo {
+      padding: 2rem;
+      border: 1px solid #DEDEDE;
+      border-radius: 20px;
+      font-size: 24px;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
@@ -19,29 +28,39 @@
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 
   <!-- Import TextEmotion -->
-  <script src="../dist/TextEmotion.js"></script>
+  <script src="./dist/TextEmotion.js"></script>
   <script>
-    var custom = new TextEmotion({
-      wrapper: document.querySelector('#custom'),
-      emotion: ['face126'],
-      color: 'blue'
-    });
+    if (window.location.hash.indexOf('preview') > -1) {
+      setTimeout(function() {
+        var basic = new TextEmotion({
+          wrapper: document.querySelector('#face'),
+          emotion: ['face180']
+        });
 
-    var animate = new TextEmotion({
-      wrapper: document.querySelector('#animate'),
-      emotion: ['face20', 'face38'],
-      animate: [200, 1500],
-      color: '#0abd23',
-      background: '#EDEDED'
-    });
+        var colored = new TextEmotion({
+          wrapper: document.querySelector('#colored-face'),
+          emotion: ['face42'],
+          color: '#ecf0f1',
+          background: '#27ae60'
+        });
 
-    const replace = new TextEmotion()
-    replace.replace();
-
-    const customTarget = new TextEmotion()
-    customTarget.replace({
-      target: '.custom-class-name'
-    });
+        var animated = new TextEmotion({
+          wrapper: document.querySelector('#animated-face'),
+          emotion: ['face167', 'face155'],
+          animate: [400, 200],
+          color: '#0abd23',
+          background: '#EDEDED'
+        });
+        
+        const replace = new TextEmotion()
+        replace.replace();
+        
+        const customTarget = new TextEmotion()
+        customTarget.replace({
+          target: '.custom-class-name'
+        });
+      }, 1000);
+    }
   </script>
 </body>
 </html>
