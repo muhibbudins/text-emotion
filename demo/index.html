@@ -7,16 +7,39 @@
   <title>Library Name</title>
 </head>
 <body>
-  <div id="root"></div>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur ipsum velit fuga, voluptatibus dolorem
+    <span class="t-inline"
+      data-face="face20"
+      data-color="green"
+    ></span> blanditiis praesentium dolor illum totam perspiciatis
+    <span class="t-inline"
+      data-face="face122"
+      data-color="red"
+    ></span>
+    quam sit nihil deleniti perferendis beatae nisi enim impedit cumque?</p>
+  <div id="custom"></div>
+  <div id="animate"></div>
   <!-- Do Stuff -->
   <script src="../dist/TextEmotion.js"></script>
   <script>
-    var x = new TextEmotion({
-      wrapper: document.querySelector('#root'),
+    var custom = new TextEmotion({
+      wrapper: document.querySelector('#custom'),
+      emotion: ['face126'],
+      color: 'blue'
+    });
+
+    var animate = new TextEmotion({
+      wrapper: document.querySelector('#animate'),
       emotion: ['face20', 'face38'],
       animate: [200, 1500],
       color: 'red',
       background: 'black'
+    });
+
+    const replace = new TextEmotion()
+
+    replace.replace({
+      target: 't-anim'
     });
   </script>
 </body>

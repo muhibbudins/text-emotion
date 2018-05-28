@@ -2,14 +2,6 @@ import './index.scss';
 
 export default class TextEmotion {
   constructor(opt) {
-    this.wrapper = typeof opt.wrapper === 'object' ?
-      opt.wrapper :
-      document.querySelector(opt.wrapper);
-    this.emotion = opt.emotion;
-    this.animate = opt.animate;
-    this.color = opt.color;
-    this.background = opt.background;
-
     /**
      * Face emotion by Kawaii Face
      * https://kawaiiface.net/happy-kawaii-faces/
@@ -199,6 +191,22 @@ export default class TextEmotion {
     };
     this.bracket = [];
 
+    if (opt) {
+      this.wrapper = typeof opt.wrapper === 'object' ?
+        opt.wrapper :
+        document.querySelector(opt.wrapper);
+      this.emotion = opt.emotion;
+      this.animate = opt.animate;
+      this.color = opt.color;
+      this.background = opt.background;
+
+      this.init();
+    }
+  }
+
+  init() {
+    this.bracket = [];
+
     this.emotion.map(item => {
       const result = this.emotionConfig[item];
 
@@ -210,7 +218,7 @@ export default class TextEmotion {
     }
 
     if (this.animate) {
-      this.createAnimate();
+      this.createAnimate(this.wrapper);
     }
   }
 
@@ -249,5 +257,41 @@ export default class TextEmotion {
     }
 
     return wrap;
+  }
+
+  replace(opt) {
+    let target = document.querySelectorAll('.t-inline');
+
+    target.forEach((el, index) => {
+      el.dataset.id = this.unique();
+
+      let face = '';
+      let delimiter = ' ';
+
+      const dataAttr = el.dataset;
+
+      if (dataAttr.face.indexOf(',') > -1) {
+        delimiter = ',';
+      }
+
+      face = dataAttr.face.split(delimiter).map(item => item.trim()).filter(item => item !== '');
+
+      this.emotion = face;
+      this.wrapper = document.querySelector(`.t-inline[data-id="${dataAttr.id}"]`);
+
+      if (dataAttr.color) {
+        this.color = dataAttr.color;
+      }
+
+      if (dataAttr.background) {
+        this.background = dataAttr.background;
+      }
+
+      this.init();
+    });
+  }
+
+  unique() {
+    return '_' + Math.random().toString(36).substr(2, 9);
   }
 }

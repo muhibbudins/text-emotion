@@ -94,15 +94,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var TextEmotion = function () {
   function TextEmotion(opt) {
-    var _this = this;
-
     _classCallCheck(this, TextEmotion);
-
-    this.wrapper = _typeof(opt.wrapper) === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
-    this.emotion = opt.emotion;
-    this.animate = opt.animate;
-    this.color = opt.color;
-    this.background = opt.background;
 
     /**
      * Face emotion by Kawaii Face
@@ -293,22 +285,39 @@ var TextEmotion = function () {
     };
     this.bracket = [];
 
-    this.emotion.map(function (item) {
-      var result = _this.emotionConfig[item];
+    if (opt) {
+      this.wrapper = _typeof(opt.wrapper) === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
+      this.emotion = opt.emotion;
+      this.animate = opt.animate;
+      this.color = opt.color;
+      this.background = opt.background;
 
-      _this.bracket.push(result);
-    });
-
-    if (this.bracket) {
-      this.wrapper.appendChild(this.place(this.bracket[0]));
-    }
-
-    if (this.animate) {
-      this.createAnimate();
+      this.init();
     }
   }
 
   _createClass(TextEmotion, [{
+    key: 'init',
+    value: function init() {
+      var _this = this;
+
+      this.bracket = [];
+
+      this.emotion.map(function (item) {
+        var result = _this.emotionConfig[item];
+
+        _this.bracket.push(result);
+      });
+
+      if (this.bracket) {
+        this.wrapper.appendChild(this.place(this.bracket[0]));
+      }
+
+      if (this.animate) {
+        this.createAnimate(this.wrapper);
+      }
+    }
+  }, {
     key: 'createAnimate',
     value: function createAnimate() {
       var _this2 = this;
@@ -348,6 +357,50 @@ var TextEmotion = function () {
       }
 
       return wrap;
+    }
+  }, {
+    key: 'replace',
+    value: function replace(opt) {
+      var _this3 = this;
+
+      var target = document.querySelectorAll('.t-inline');
+
+      target.forEach(function (el, index) {
+        el.dataset.id = _this3.unique();
+
+        var face = '';
+        var delimiter = ' ';
+
+        var dataAttr = el.dataset;
+
+        if (dataAttr.face.indexOf(',') > -1) {
+          delimiter = ',';
+        }
+
+        face = dataAttr.face.split(delimiter).map(function (item) {
+          return item.trim();
+        }).filter(function (item) {
+          return item !== '';
+        });
+
+        _this3.emotion = face;
+        _this3.wrapper = document.querySelector('.t-inline[data-id="' + dataAttr.id + '"]');
+
+        if (dataAttr.color) {
+          _this3.color = dataAttr.color;
+        }
+
+        if (dataAttr.background) {
+          _this3.background = dataAttr.background;
+        }
+
+        _this3.init();
+      });
+    }
+  }, {
+    key: 'unique',
+    value: function unique() {
+      return '_' + Math.random().toString(36).substr(2, 9);
     }
   }]);
 
@@ -416,7 +469,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "html, body {\n  padding: 0; }\n\nbody {\n  width: 100%;\n  height: 100vh;\n  font-size: 48px;\n  font-weight: 400;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: #DADADA;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n", ""]);
+exports.push([module.i, "html, body {\n  padding: 0; }\n\nbody {\n  width: 100%;\n  height: 100vh;\n  font-size: 48px;\n  font-weight: 400;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: #DADADA; }\n\n.t-animate {\n  display: inline-block;\n  margin-top: 6px;\n  line-height: .8;\n  padding-bottom: 10px; }\n", ""]);
 
 // exports
 
