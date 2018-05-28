@@ -1,0 +1,6 @@
+* [Home](/)
+* [Face Symbol](face.md)
+* [Demo](preview.md)
+* [Basic Usage](preview.md#basic-usage)
+* [Animation](preview#animation)
+* [API Reference](api.md)
