@@ -6,8 +6,7 @@ export default class TextEmotion {
       opt.wrapper :
       document.querySelector(opt.wrapper);
     this.emotion = opt.emotion;
-    this.animate = opt.delay;
-    this.loop = opt.loop;
+    this.animate = opt.animate;
     this.symbol = {
       face: {
         round: ['( ', ' )'],
@@ -77,7 +76,6 @@ export default class TextEmotion {
       };
 
       requestAnimationFrame(animate);
-
     }
   }
 
