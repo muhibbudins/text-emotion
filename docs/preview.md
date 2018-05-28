@@ -78,17 +78,19 @@
 ### Replacer (Custom class name)
 
 <div class="demo">
-  Dicta alias aspernatur corporis voluptatem a, officia consequatur 
-  <span class="custom-class-name" data-face="face122" data-color="red"></span> sunt culpa similique beatae 
-  blanditiis est laboriosam sit reprehenderit deserunt dolorum!
+  Dicta alias aspernatur corporis voluptatem <span class="custom-class-name" data-face="face25" data-color="blue"></span>
+  a, officia consequatur <span class="custom-class-name" data-face="face122" data-color="red"></span> sunt
+  culpa similique beatae blanditiis est laboriosam
+  <span class="custom-class-name" data-face="face100" data-color="green"></span> sit reprehenderit deserunt dolorum!
 </div>
 
 ```html
 <!-- HTML -->
 <div>
-  Dicta alias aspernatur corporis voluptatem a, officia consequatur 
-  <span class="custom-class-name" data-face="face122" data-color="red"></span> sunt culpa similique beatae 
-  blanditiis est laboriosam sit reprehenderit deserunt dolorum!
+  Dicta alias aspernatur corporis voluptatem <span class="custom-class-name" data-face="face25" data-color="blue"></span>
+  a, officia consequatur <span class="custom-class-name" data-face="face122" data-color="red"></span> sunt
+  culpa similique beatae blanditiis est laboriosam
+  <span class="custom-class-name" data-face="face100" data-color="green"></span> sit reprehenderit deserunt dolorum!
 </div>
 
 <!-- JavaScript -->

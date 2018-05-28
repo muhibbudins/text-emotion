@@ -1,6 +1,8 @@
+![Preview](preview.gif)
+
 # Text Emotion
 
-TextEmotion are library to create emotion text only using Vanilla JavaScript (without dependency required). We can create emotion like smile, sad and more (180+ emotion).
+TextEmotion are library to create emotion text, using Vanilla JavaScript (without dependency required). We can create emotion like smile, sad and more (180+ emotion).
 
 We use [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion dictionary.
 
