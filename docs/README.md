@@ -1,14 +1,23 @@
-# What Is?
+# Text Emotion
 
 TextEmotion are library to create emotion text only using Vanilla JavaScript (without dependency required). We can create emotion like smile, sad and more (180+ emotion).
 
 We use [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion dictionary.
 
 - [Live Preview](/preview)
-- [Face Symbol](/face)
+- [Face Dictionary](/face)
 - [API Reference](/api)
 
-#### Todo
+### Getting Started
+
+1. [Download](https://raw.githubusercontent.com/muhibbudins/text-emotion/master/dist/TextEmotion.min.js) latest version of TextEmotion
+2. Include to your project
+```html
+<script src="path/to/TextEmotion.min.js" type="text/javascript"></script>
+```
+3. Run TextEmotion like [demo](/preview).
+
+### Todo
 
 - [x] Create base Emotion Dictionary
 - [x] Create function to create face
@@ -19,10 +28,10 @@ We use [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion 
 - [x] Create documentation
 - [ ] Implement animate on inline emotion
 
-#### Credit
+### Thanks To
 
-Special thanks to [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/)
+Special thanks to [KawaiiFace](https://kawaiiface.net/happy-kawaii-faces/) as text emotion dictionary.
 
-#### License
+### License
 
 This projects under MIT License

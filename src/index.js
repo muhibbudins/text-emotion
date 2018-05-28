@@ -192,9 +192,7 @@ export default class TextEmotion {
     this.bracket = [];
 
     if (opt) {
-      this.wrapper = typeof opt.wrapper === 'object' ?
-        opt.wrapper :
-        document.querySelector(opt.wrapper);
+      this.wrapper = typeof opt.wrapper === 'object' ? opt.wrapper : document.querySelector(opt.wrapper);
       this.emotion = opt.emotion;
       this.animate = opt.animate;
       this.color = opt.color;
