@@ -470,7 +470,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "html, body {\n  padding: 0; }\n\nbody {\n  width: 100%;\n  height: 100vh;\n  font-size: 48px;\n  font-weight: 400;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: #DADADA; }\n\n.t-animate {\n  display: inline-block;\n  margin-top: 6px;\n  line-height: .8;\n  padding-bottom: 10px; }\n", ""]);
+exports.push([module.i, ".t-animate {\n  display: inline-block;\n  margin-top: 6px;\n  line-height: .8;\n  padding-bottom: 10px; }\n", ""]);
 
 // exports
 

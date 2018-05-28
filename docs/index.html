@@ -17,5 +17,31 @@
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+
+  <!-- Import TextEmotion -->
+  <script src="../dist/TextEmotion.js"></script>
+  <script>
+    var custom = new TextEmotion({
+      wrapper: document.querySelector('#custom'),
+      emotion: ['face126'],
+      color: 'blue'
+    });
+
+    var animate = new TextEmotion({
+      wrapper: document.querySelector('#animate'),
+      emotion: ['face20', 'face38'],
+      animate: [200, 1500],
+      color: '#0abd23',
+      background: '#EDEDED'
+    });
+
+    const replace = new TextEmotion()
+    replace.replace();
+
+    const customTarget = new TextEmotion()
+    customTarget.replace({
+      target: '.custom-class-name'
+    });
+  </script>
 </body>
 </html>
