@@ -70,7 +70,7 @@
 
 <!-- JavaScript -->
 <script>
-  const replace = new TextEmotion()
+  var replace = new TextEmotion()
   replace.replace();
 </script>
 ```
@@ -95,7 +95,7 @@
 
 <!-- JavaScript -->
 <script>
-  const customTarget = new TextEmotion()
+  var customTarget = new TextEmotion()
   customTarget.replace({
     target: '.custom-class-name'
   });
